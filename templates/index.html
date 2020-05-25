@@ -1,0 +1,320 @@
+﻿{% extends "base.html" %} {% load static %} {% block body %}
+
+<!-- home
+   ================================================== -->
+<section id="home" class="s-home page-hero target-section" data-parallax="scroll" data-image-src="{% static 'images/hero-bg.jpg' %}" data-natural-width=3000 data-natural-height=2000 data-position-y=center>
+
+    <div class="overlay"></div>
+    <div class="shadow-overlay"></div>
+
+    <div class="home-content">
+
+        <div class="row home-content__main">
+
+            <h3>Hello Namaste!</h3>
+
+            <h1>
+                Welcome to the Virtual library <br> Find your best motivational blogs here <br> So, Start Reading...
+            </h1>
+
+            <div class="home-content__buttons">
+                
+                <a href="Blog" class="btn btn--stroke">
+                        GoTo Blogs
+                 </a>
+
+            </div>
+
+            <div class="home-content__scroll">
+                <a href="#about" class="scroll-link smoothscroll">
+                    <span>Scroll Down</span>
+                </a>
+            </div>
+
+        </div>
+
+    </div>
+    <!-- end home-content -->
+
+    <ul class="home-social">
+        <li>
+            <a href="#"><i class="im im-facebook" aria-hidden="true"></i><span>Facebook</span></a>
+        </li>
+       
+        <li>
+            <a href="#"><i class="im im-instagram" aria-hidden="true"></i><span>Instagram</span></a>
+        </li>
+     </ul>
+    <!-- end home-social -->
+
+</section>
+<!-- end s-home -->
+
+<!-- blog
+    ================================================== -->
+<section id="blog" class="s-blog target-section">
+
+    <div class="row narrow section-intro has-bottom-sep">
+        <div class="col-full">
+            <h1>Latest From The Blog.</h1>
+            <p class="lead">Blogs, Poems, Inspirational Stories, Articles in Hindi, English and Gujarati.</p>
+        </div>
+    </div>
+
+    <div class="row blog-content">
+      
+        <div class="col-full">
+
+            <div class="blog-list block-1-2 block-tab-full">
+                 {% for post in post_list %}
+                   
+                    
+                            <article class="col-block">
+
+                                <div class="blog-date">
+                                    <a href="blog-single.html"> {{post.created_on}} | <span>{{post.views}} views</span></a>
+                                </div>
+
+                                <h2 class="h01"><a href="{% url 'blog-single' post.slug  %}">{{ post.title }}</a></h2>
+                                <p>
+                                        {{post.content|safe|truncatechars:250}}
+                                        <a href="{% url 'blog-single' post.slug  %}">continue Reading </a>
+                                </p>
+                                
+                                <div class="blog-cat">
+                                        by <i>{{ post.author }}</i>
+                                </div>
+                            </article>                    
+                 {% endfor %}             
+            </div>
+            <!-- end blog-list -->
+        <!-- end col-full -->
+    </div>
+
+    <!-- end blog-content -->
+    <div style="padding-left: 600px;">
+        <a href="Blog" class="btn btn--stroke">
+            More Blogs
+        </a>
+    </div>
+
+</section>
+
+<!-- end s-blog -->
+
+
+
+<!-- about
+    ================================================== -->
+<section id="about" class="s-about target-section"   style="  padding-top: 10px;" >
+
+    <div class="row narrow section-intro has-bottom-sep">
+        <div class="col-full text-center">
+            <h3>About</h3>
+            <h1>More About Us</h1>
+            <p class="lead">We believe that a reader has to learn only as much technology as it’s needed to fully enjoy the magic of reading. Reading in times of digital content is changing, but it doesn’t mean it gives less pleasure. Just the opposite.</p>
+        </div>
+    </div>
+
+    <div class="row about-content">
+
+        <div class="col-six tab-full left">
+            <h3>Howdy!</h3>
+
+            <p>There is absolutely no difference between a hardcover book or an audiobook or a multimedia book application. There is no difference between a high-quality paper and e-ink screen or a high-resolution Retina display.</p>
+
+            <p>
+                The biggest pleasure comes from what we read, not from on what we read. The real difference, though, lies in our attitude to reading.<strong>Gilbert K. Chesterton</strong> once said: “There is a great deal of difference between an eager
+                man who wants to read a book and the tired man who wants a book to read.(Courtesy: Wikipedia)”
+            </p>
+        </div>
+        <style>
+            .bigger-image {
+                width: 550px;
+            }
+        </style>
+        <img class="bigger-image" src="{% static 'images\gilbert-k-chesterton-2.jpg' %}" alt="Gilbert K. Chesterton">
+
+
+    </div>
+    <!-- end about-content -->
+
+    <div class="row about-content about-content--buttons">
+
+    </div>
+    <!-- end about-content buttons -->
+
+    <div class="row about-content about-content--timeline">
+
+        <div class="col-full text-center">
+            <h3>In the Box</h3>
+        </div>
+        <div class="col-six tab-full left">
+            <div class="timeline">
+
+                <div class="timeline__block">
+                    <div class="timeline__bullet"></div>
+                    <div class="timeline__header">
+                        <h3>Articles/Blogs</h3>
+
+                        <style>
+                            .smaller-image {
+                                width: 100px;
+                            }
+                            
+                            .thick-green-border {
+                                border-color: grey;
+                                border-width: 5px;
+                                border-style: solid;
+                                border-radius: 50px;
+                            }
+                        </style>
+                        <a href="#"><img class="smaller-image
+thick-green-border" src="{% static 'images\book.jpg' %}" alt="book"></a>
+
+
+                    </div>
+                    <div class="timeline__desc">
+                        <p>Read Our Handpicked Articles and some of them written by our writers.</p>
+                    </div>
+                </div>
+                <!-- end timeline__block -->
+
+                <div class="timeline__block">
+                    <div class="timeline__bullet"></div>
+                    <div class="timeline__header">
+                        <h3>Stories</h3>
+
+                        <style>
+                            .smaller-image {
+                                width: 100px;
+                            }
+                            
+                            .thick-green-border {
+                                border-color: grey;
+                                border-width: 5px;
+                                border-style: solid;
+                                border-radius: 50px;
+                            }
+                        </style>
+                        <a href="#"><img class="smaller-image
+thick-green-border" src="{% static 'images\writer.JPG' %}" alt="writer"></a>
+
+                    </div>
+                    <div class="timeline__desc">
+                        <p>Checkout our writers stories and quotes here. Everyday's Inspiration with a positive Story.</p>
+                    </div>
+                </div>
+                <!-- end timeline__block -->
+
+            </div>
+            <!-- end timeline -->
+        </div>
+        <!-- end left -->
+
+        <div class="col-six tab-full right">
+            <div class="timeline">
+
+                <div class="timeline__block">
+                    <div class="timeline__bullet"></div>
+                    <div class="timeline__header">
+                        <h3>Audio Stories</h3>
+
+                        <style>
+                            .smaller-image {
+                                width: 100px;
+                            }
+                            
+                            .thick-green-border {
+                                border-color: grey;
+                                border-width: 5px;
+                                border-style: solid;
+                                border-radius: 50px;
+                            }
+                        </style>
+                        <a href="#"><img class="smaller-image
+thick-green-border" src="{% static 'images\Audio.jpg' %}" alt="audio"></a>
+
+
+                    </div>
+                    <div class="timeline__desc">
+                        <p>Listen our latest audio books. Don't just read the story Feel it..!</p>
+                    </div>
+                </div>
+                <!-- end timeline__block -->
+
+                <div class="timeline__block">
+                    <div class="timeline__bullet"></div>
+                    <div class="timeline__header">
+                        <h3>Poem</h3>
+                        <style>
+                            .smaller-image {
+                                width: 100px;
+                            }
+                            
+                            .thick-green-border {
+                                border-color: grey;
+                                border-width: 5px;
+                                border-style: solid;
+                                border-radius: 50px;
+                            }
+                        </style>
+                        <a href="#"><img class="smaller-image
+thick-green-border" src="{% static 'images\short.JPG' %}" alt="short"></a>
+
+
+                    </div>
+                    <div class="timeline__desc">
+                        <p>Read our latest poems with a great meaning and give your brain a boost of creativity.</p>
+                    </div>
+                </div>
+                <!-- end timeline__block -->
+
+            </div>
+            <!-- end timeline -->
+        </div>
+        <!-- end right -->
+
+    </div>
+    <!-- end about-content timeline -->
+
+</section>
+<!-- end about -->
+
+
+<!-- testimonials
+    ================================================== -->
+<div class="s-testimonials">
+
+    <div class="overlay"></div>
+
+    <div class="row testimonials-header">
+        <div class="col-full">
+            <h1 class="h02">What People Say Abour Reading...</h1>
+            s </div>
+    </div>
+
+    <div class="row testimonials">
+
+        <div class="col-full testimonials__slider">
+            {% for i in post_list %}
+                <div class="testimonials__slide">
+                <img src="{% static 'images/avatars/user-02.jpg'%}" alt="Author image" class="testimonials__avatar">
+                <p>Books were my pass to personal freedom.</p>
+                <div class="testimonials__author h06">
+                    {{i.id}})Oprah Winfray
+                    <span> American media executive, actress, talk show host and philanthropist.</span>
+                </div>
+            </div>
+            {% endfor %}
+            
+        </div>
+        <!-- end testimonials__slider -->
+
+    </div>
+    <!-- end testimonials -->
+
+</div>
+<!-- end s-testimonials -->
+
+{% endblock body %}

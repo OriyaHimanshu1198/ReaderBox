@@ -1,0 +1,25 @@
+{% load static %}
+
+<body id="top">
+
+    <!-- header
+    ================================================== -->
+    <header class="s-header">
+
+        <div class="header-logo">
+            <a class="site-logo" href="{% url 'home' %}"><img src="{% static 'images/logo.PNG' %}" alt="Homepage"></a>
+        </div>
+
+        <nav class="header-nav-wrap">
+            <ul class="header-nav">
+                <li class="current"><a href="{% url 'home' %}" title="home">Home</a></li>
+                <!--<li><a class="smoothscroll"  href="#about" title="about">About</a></li>-->
+                <!-- <li><a class="smoothscroll"  href="#audio blog" title="audio blog">Audio Blog</a></li>-->
+                <li><a  href="{% url 'Blog'%}" title="blog">Blog</a></li>
+                <li><a href="{% url 'contact'%}" title="contact">Contact</a></li>
+            </ul>
+        </nav>
+
+        <a class="header-menu-toggle" href="#0"><span>Menu</span></a>
+
+    </header>

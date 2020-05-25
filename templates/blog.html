@@ -1,0 +1,85 @@
+﻿{% extends "base.html" %} {% block body %} {% load static %}
+
+<body id="top">
+
+    <!-- page header
+    ================================================== -->
+    <section class="page-header page-hero" style="background-image:url({% static 'images/blog/blog-bg-01.jpg' %})">
+
+        <div class="row page-header__content">
+            <article class="col-full">
+
+                <h1 class="page-header__title">
+                    Read Our Blogs.
+                </h1>
+                <p> Hope You Are Enjoy Our Blogs. Read It , Support Us. Reader Box. </p>
+
+    </section>
+    <!-- end page-header -->
+
+    <!-- blog
+    ================================================== -->
+    <section class="blog-content-wrap">
+
+        <div class="row blog-content">
+            <div class="col-full">
+
+                <div class="blog-list block-1-2 block-tab-full">
+                    {% for post in post_list %}
+
+                    <article class="col-block">
+
+                        <div class="blog-date">
+                            {{post.created_on}} | <span>{{post.views}} views</span>
+                        </div>
+
+                        <h2 class="h01"><a href="{% url 'blog-single' post.slug  %}">{{ post.title }}</a></h2>
+                        <p>
+                           {{post.content|safe|truncatechars:250}}
+                           <a href="{% url 'blog-single' post.slug  %}">continue Reading </a>
+                   
+                        </p>
+
+                        <div class="blog-cat">
+                            by <i>{{ post.author }}</i>
+                        </div>
+
+                    </article>
+                    {% endfor %}
+
+
+
+
+                </div>
+                <!-- end blog-list -->
+
+            </div>
+
+            <!-- end col-full -->
+            <div style="padding-left: 25rem ;">
+                {% if post_list.paginator.num_pages > 1 %}
+
+                <div class="pagination">
+                    {% if post_list.has_previous %}
+                    <a href="?page=1" class="btn btn--stroke">First</a>
+                    <a href="?page={{ post_list.previous_page_number }}" class="btn btn--stroke">Previous</a> {% endif %}
+                    <span class="btn btn--stroke" >{{ post_list.number }} of {{ post_list.paginator.num_pages }}</span> {% if post_list.has_next %}
+                    <a href="?page={{ post_list.next_page_number }}" class="btn btn--stroke">Next</a>
+                    <a href="?page={{ post_list.paginator.num_pages }}" class="btn btn--stroke">Last</a> {% endif %}
+                </div>
+
+                {% endif %}
+            </div>
+        </div>
+        <!-- end blog-content -->
+
+
+     
+
+
+
+
+    </section>
+    <!-- end blog-content-wrap -->
+
+    {% endblock body %}

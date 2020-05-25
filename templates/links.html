@@ -1,0 +1,44 @@
+{% load static%}
+<!DOCTYPE html>
+<!--[if lt IE 9 ]><html class="no-js oldie" lang="en"> <![endif]-->
+<!--[if IE 9 ]><html class="no-js oldie ie9" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html class="no-js" lang="en">
+<!--<![endif]-->
+
+<head>
+
+    <!--- basic page needs
+    ================================================== -->
+    <meta charset="utf-8">
+    <title>ReaderBox</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- mobile specific metas
+    ================================================== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSS
+    ================================================== -->
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'css/vendor.css' %}">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+
+    <!-- script
+    ================================================== -->
+    <script src=" {% static 'js/modernizr.js' %}"></script>
+    <script src="{% static 'js/pace.min.js' %}"></script>
+    <script>
+        .comment {
+            margin: 20 px 0 px 20 px 20 px;
+        }
+    </script>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v7.0"></script>
+
+    <!-- favicons
+    ================================================== 
+    <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon">
+    <link rel="icon" href="{% static 'iamges/favicon.ico' %}" type="image/x-icon">-->
+
+</head>

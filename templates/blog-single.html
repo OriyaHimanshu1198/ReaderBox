@@ -1,0 +1,101 @@
+﻿{% load static %} {% include "links.html" %} {% include "header.html" %}
+<!-- end s-header -->
+
+{% block body %}
+
+<article class="blog-single">
+
+    <!-- page header/blog hero
+        ================================================== -->
+    <div class="page-header page-header--single page-hero" style="background-image:url({% static 'images/blog/blog-bg-02.jpg' %})">
+
+        <div class="row page-header__content narrow">
+            <article class="col-full">
+
+                <h1 class="page-header__title">
+                    {% block title %} {{ post.title }} {% endblock title %}
+                </h1>
+                <ul class="page-header__meta">
+                    <li class="date">{{ post.created_on }} | <span>{{post.views}} views</span></li>
+                    <li class="author">
+                        By
+                        <span>{{ post.author }}</span> 
+                        <div class="fb-share-button" data-href="http://127.0.0.1:8000/{{post.slug}}" data-layout="button_count" data-size="large"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2F127.0.0.1%3A8000%2Fhindistory%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a></div>
+                    </li>
+                </ul>
+
+            </article>
+        </div>
+
+    </div>
+    <!-- end page-header -->
+
+    <div class="row blog-content">
+        <div class="col-full blog-content__main">
+            {{ post.content | safe }}
+            <div class="fb-like" data-href="http://127.0.0.1:8000/{{post.slug}}" data-width="" data-layout="box_count" data-action="like" data-size="large" data-share="true"></div><br>
+        </div>
+        <div class="fb-comments" data-href="http://127.0.0.1:8000/{{post.slug}}" data-numposts="5" data-width=""></div>
+        <!-- end blog-content__main -->
+    </div>
+    <!-- end blog-content -->
+</article>
+
+
+    <div class="comments-wrap">
+
+        <div id="comments" class="row">
+            <div class="col-full">
+
+                <h3> {{comments.count}} Comment{{comments|pluralize}}</h3>
+
+                <!-- commentlist -->
+                <ol class="commentlist">
+                    {% for comment in comments %}
+                    <li class="depth-1 comment">
+
+                        <div class="comment__avatar">
+                            <img width="50" height="50" class="avatar" src="{% static 'images/avatars/user-01.jpg' %}" alt="">
+                        </div>
+
+                        <div class="comment__content">
+
+                            <div class="comment__info">
+                                <cite>{{comment.name|capfirst}}</cite>
+                                <div class="comment__meta">
+                                    <time class="comment__time">{{comment.timestamp}}</time>
+                                </div>
+                            </div>
+                            <div class="comment__text">
+                                <p>{{comment.content}}</p>
+                            </div>
+                        </div>
+                    </li>
+                    {% endfor %}
+
+                </ol>
+                <!-- Commentlist End -->
+
+                <!-- respond -->
+                <div class="respond">
+
+                    <h3>Leave a Comment</h3>
+
+                        <form method="POST">
+                            {% csrf_token %} {{comment_form.as_p }}
+                            <input type="submit" value="Submit" class="btn btn-outline-success">
+                        </form>
+                    <!-- Form End -->
+
+                </div>
+                <!-- Respond End -->
+
+            </div>
+            <!-- end col-full -->
+        </div>
+        <!-- end row comments -->
+    </div>
+    <!-- comments
+    ================================================== -->
+
+    {% endblock body %} {% include "footer.html" %}
